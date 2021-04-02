@@ -28,7 +28,8 @@ export default class About extends Vue {
 
   created() {
     window.bus.$on("click", (obj: any) => {
-      ac.p = ac.p + obj.a;
+      // console.log(obj, "lll");
+      ac.p = 1;
     });
   }
 

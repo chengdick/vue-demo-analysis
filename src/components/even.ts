@@ -39,7 +39,7 @@ export class Myevent {
   $once(target: string, handler: Function) {
     let on: any = (item: any) => {
       this.$off(target, on);
-      handler.apply(this, [item]);
+      handler.call(this, item);
     };
     on.fn = handler;
     this.$on(target, on);
@@ -47,5 +47,5 @@ export class Myevent {
 }
 
 // {
-//   'click':[cb]
+//   'click':[cb,cb]
 // }

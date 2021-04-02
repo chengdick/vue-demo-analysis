@@ -1,6 +1,6 @@
 class Dep {
   subs: Array<Watcher> = [];
-  static target: any;
+  static target: any = null;
   addSub(sub: Watcher) {
     this.subs = Array.from(new Set([...this.subs, sub]));
   }
@@ -15,7 +15,7 @@ class Dep {
     }
   }
 }
-Dep.target = null;
+// Dep.target = null;
 class Watcher {
   cb: Function;
   exp: Function;
