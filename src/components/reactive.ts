@@ -3,7 +3,6 @@ class Dep {
   static target: any;
   addSub(sub: Watcher) {
     this.subs = Array.from(new Set([...this.subs, sub]));
-    // this.subs.push(sub);
   }
   depend() {
     if (Dep.target) {
@@ -36,8 +35,8 @@ class Watcher {
 function defineReactive(obj: any, key: string, val: any) {
   let dep = new Dep();
   Object.defineProperty(obj, key, {
-    enumerable: true,
-    configurable: true,
+    enumerable: true, //可以枚举
+    configurable: true, //当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。
     get() {
       if (Dep.target) {
         dep.depend();
@@ -61,3 +60,5 @@ const observe = (data: any) => {
 };
 
 export { observe, Watcher };
+
+// [watcher,watcher]

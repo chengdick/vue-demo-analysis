@@ -15,6 +15,8 @@ observe(ac);
 new Watcher(
   () => {
     console.log(ac);
+    // sameVnode;
+    // patchVnode
   },
   () => {}
 );

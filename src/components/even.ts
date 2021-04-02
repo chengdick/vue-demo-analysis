@@ -5,10 +5,8 @@ export class Myevent {
   }
 
   $on(target: string, handler: Function) {
-    if (target) {
-      this.subs[target] = this.subs[target] || [];
-      this.subs[target].push(handler);
-    }
+    this.subs[target] = this.subs[target] || [];
+    this.subs[target].push(handler);
   }
 
   $emit(target: string, data: any) {
@@ -47,3 +45,7 @@ export class Myevent {
     this.$on(target, on);
   }
 }
+
+// {
+//   'click':[cb]
+// }
