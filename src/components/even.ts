@@ -1,14 +1,17 @@
 export class Myevent {
   subs: any;
   constructor() {
+    // 存储队列
     this.subs = Object.create(null);
   }
 
+  // 订阅队列
   $on(target: string, handler: Function) {
     this.subs[target] = this.subs[target] || [];
     this.subs[target].push(handler);
   }
 
+  //发布队列
   $emit(target: string, data: any) {
     if (this.subs[target]) {
       this.subs[target].forEach((item: Function) => {
@@ -17,6 +20,7 @@ export class Myevent {
     }
   }
 
+  //解绑
   $off(target?: string, handler?: Function) {
     if (!arguments.length) {
       this.subs = Object.create(null);
@@ -36,6 +40,7 @@ export class Myevent {
     }
   }
 
+  //使用一次解绑
   $once(target: string, handler: Function) {
     let on: any = (item: any) => {
       this.$off(target, on);
