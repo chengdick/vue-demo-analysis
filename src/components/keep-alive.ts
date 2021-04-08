@@ -7,8 +7,8 @@ class LRUCache {
   }
 
   get(key: number) {
-    let index = this.keys.findIndex((item: number) => item === key);
     if (this.keys.includes(key)) {
+      const index = this.keys.findIndex((item: number) => item === key);
       this.keys.splice(index, 1);
       this.keys.unshift(key);
     }
@@ -18,10 +18,9 @@ class LRUCache {
   put(key: number, value: any) {
     this.cache[key] = value;
     if (this.keys.includes(key)) {
-      let index = this.keys.findIndex((item) => item === key);
+      let index = this.keys.findIndex((item: number) => item === key);
       this.keys.splice(index, 1);
     }
-
     this.keys.unshift(key);
     if (this.keys.length > this.capacity) {
       const key1 = this.keys.slice(-1)[0];
