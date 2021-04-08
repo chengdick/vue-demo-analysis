@@ -1,0 +1,8 @@
+1 busevent
+2 $attr  $listeners
+3 $solt
+4 $parent $children
+7 ref
+8 props $emit
+9 $root
+10 provide inject
