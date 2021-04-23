@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r!=null) return unescape(r[2]); return null;
+    }
+    </script>
+    <script>
+        // 1. xss 跨站脚本攻击
+        // 攻击手段
+        // 反射型 服务端返回非法脚本
+        // 存储型 
+        // DOM型
+        window.onload = function (){
+            document.getElementById('box').innerHTML=GetQueryString('id')
+        }
+    </script>
+</body>
+</html>
